@@ -1,6 +1,7 @@
 import { FC, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import useGetCountryByName from '../../hooks/useGetCountryByName';
+import { Toast } from 'react-bootstrap';
 
 interface Props {
     name: string
@@ -9,14 +10,6 @@ interface Props {
 const CountryCard: FC<Props> = ({ name }) => {
     const { data, loading, error } = useGetCountryByName(name)
 
-    useEffect(() => {
-        console.log('country card name', name)
-    }, [name])
-
-    useEffect(() => {
-        console.log('data, loading, error ', data, loading, error)
-    }, [data, loading, error])
-
     return (
         <>
             {
@@ -24,11 +17,17 @@ const CountryCard: FC<Props> = ({ name }) => {
                     <Card.Img variant="top" src={data.flag} alt={data.alt} />
                     <Card.Body>
                         <Card.Title>{data.name}</Card.Title>
-                        <Card.Text>
-                            {data.capital}
-                        </Card.Text>
+                        {data.capital && <Card.Text>{`The capital is ${data.capital}`}</Card.Text>}
+
                     </Card.Body>
                 </Card>
+            }
+
+            {
+                error && <Toast>
+                    <Toast.Header>Error</Toast.Header>
+                    <Toast.Body>Oops: {error}</Toast.Body>
+                </Toast>
             }
         </>
 

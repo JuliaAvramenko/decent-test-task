@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 
-// Хук useFetch
+
 function useGetCountries() {
     const [data, setData] = useState<Array<any>>([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<any>(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -13,14 +13,14 @@ function useGetCountries() {
                 const result = await response.json();
                 setData(result);
             } catch (error: any) {
-                setError(error);
+                setError(error.message);
             } finally {
                 setLoading(false);
             }
         };
 
         fetchData();
-    }, []); // Зависимость от URL гарантирует, что запрос будет повторно выполнен, если URL изменится
+    }, []);
 
     return { data, loading, error };
 }

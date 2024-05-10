@@ -7,11 +7,11 @@ export interface ICountry {
     capital: string
 }
 
-// Хук useFetch
+
 function useGetCountryByName(name: string) {
     const [data, setData] = useState<ICountry | null>(null);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<any>(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -24,7 +24,7 @@ function useGetCountryByName(name: string) {
                     const name: string = c.name.common
                     const flag: string = c.flags.svg
                     const alt: string = c.flags.alt
-                    const capital: string = c.capital.join(', ')
+                    const capital: string = c.capital && c.capital.join(', ') || ''
 
 
                     setData({
@@ -34,16 +34,17 @@ function useGetCountryByName(name: string) {
                         capital
                     })
                 }
-
-            } catch (error: any) {
-                setError(error);
+            } catch (error: unknown) {
+                if (error instanceof Error) {
+                    setError(error.message);
+                }
             } finally {
                 setLoading(false);
             }
         };
 
         fetchData();
-    }, [name]); // Зависимость от URL гарантирует, что запрос будет повторно выполнен, если URL изменится
+    }, [name]);
 
     return { data, loading, error };
 }
