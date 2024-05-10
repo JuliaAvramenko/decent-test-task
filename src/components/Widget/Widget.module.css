@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    padding: 50px;
+    column-gap: 50px;
+}
+
+.row {
+    row-gap: 10px;
+}
+
+.button {
+    text-wrap: nowrap;
+}
+
+.stack {
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 70%;
+    border-right: 1px solid gray;
+    padding-right: 50px;
+}
