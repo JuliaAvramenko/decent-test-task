@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/decent-test-task/static/css/main.16dfcbc3.css",
+    "main.js": "/decent-test-task/static/js/main.b0c13344.js",
+    "static/js/453.a4a632bd.chunk.js": "/decent-test-task/static/js/453.a4a632bd.chunk.js",
+    "index.html": "/decent-test-task/index.html",
+    "main.16dfcbc3.css.map": "/decent-test-task/static/css/main.16dfcbc3.css.map",
+    "main.b0c13344.js.map": "/decent-test-task/static/js/main.b0c13344.js.map",
+    "453.a4a632bd.chunk.js.map": "/decent-test-task/static/js/453.a4a632bd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.16dfcbc3.css",
+    "static/js/main.b0c13344.js"
+  ]
+}
